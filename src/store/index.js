@@ -1,8 +1,11 @@
 import { createStore } from 'vuex'
 
 
-// Create a new store instance.
+//create a new store instance.
 const store = createStore({
+
+  //each pool has an items counter to keep track of the number of upvote buttons
+  //and a selected flag to keep track of selected/not-selected state of the buttons in the pool
   state: {
       pool: {
       	1: {
@@ -20,9 +23,11 @@ const store = createStore({
     }
   },
   mutations: {
+    //increments items counter for passed in pool index
     addUpvote (state, { index }) {
      	state.pool[index].items++
     },
+    //toggles selected flag in pool
     handleSelect (state, { index }) {
     	state.pool[index].selected = !state.pool[index].selected
     }
@@ -30,5 +35,5 @@ const store = createStore({
 })
 
 
-// Export store and import in main.js
+// export store and import in main.js
 export default store
